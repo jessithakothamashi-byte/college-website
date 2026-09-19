@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC College of Engineering</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        header {
+            background: #003366;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 500px;
+            background:
+                linear-gradient(rgba(0, 51, 102, 0.75),
+                rgba(0, 51, 102, 0.75)),
+                linear-gradient(135deg, #0066cc, #00aaff);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffcc00;
+            color: #003366;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        /* General Section */
+        section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        /* About */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* Courses */
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .course-card h3 {
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .course-card p {
+            line-height: 1.6;
+        }
+
+        /* Facilities */
+        .facilities {
+            background: white;
+        }
+
+        .facility-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .facility {
+            background: #f0f5fa;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .facility h3 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .contact-form button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #0055a5;
+        }
+
+        /* Footer */
+        footer {
+            background: #002244;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .facility-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .contact-info,
+            .contact-form {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+
+            .hero-content p {
+                font-size: 17px;
+            }
+
+            .courses-container,
+            .facility-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">ABC College</div>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to ABC College</h1>
+            <p>Learn Today, Lead Tomorrow</p>
+            <a href="#courses" class="btn">Explore Courses</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Our College</h2>
+
+        <div class="about-content">
+            <p>
+                ABC College of Engineering is committed to providing
+                quality education and developing students with technical
+                knowledge, creativity, leadership skills and strong values.
+                Our college provides a modern learning environment with
+                experienced faculty members and excellent facilities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses">
+        <h2 class="section-title">Our Courses</h2>
+
+        <div class="courses-container">
+
+            <div class="course-card">
+                <h3>Computer Science</h3>
+                <p>
+                    Learn programming, web development, databases,
+                    artificial intelligence and modern technologies.
+                </p>
+            </div>
+
+            <div class="course-card">
+                <h3>Information Technology</h3>
+                <p>
+                    Develop skills in software development, networking,
+                    cloud computing and information systems.
+                </p>
+            </div>
+
+            <div class="course-card">
+                <h3>Electronics Engineering</h3>
+                <p>
+                    Explore electronics, communication systems,
+                    embedded systems and digital technology.
+                </p>
+            </div>
+
+            <div class="course-card">
+                <h3>Mechanical Engineering</h3>
+                <p>
+                    Study manufacturing, machine design, thermodynamics
+                    and modern mechanical technologies.
+                </p>
+            </div>
+
+            <div class="course-card">
+                <h3>Civil Engineering</h3>
+                <p>
+                    Learn structural engineering, construction,
+                    transportation and environmental engineering.
+                </p>
+            </div>
+
+            <div class="course-card">
+                <h3>Business Administration</h3>
+                <p>
+                    Develop knowledge of management, finance, marketing
+                    and entrepreneurship.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Facilities -->
+    <section class="facilities" id="facilities">
+        <h2 class="section-title">Our Facilities</h2>
+
+        <div class="facility-container">
+
+            <div class="facility">
+                <h3>📚 Library</h3>
+                <p>Large collection of books and digital resources.</p>
+            </div>
+
+            <div class="facility">
+                <h3>💻 Computer Lab</h3>
+                <p>Modern computers and high-speed internet.</p>
+            </div>
+
+            <div class="facility">
+                <h3>🏀 Sports</h3>
+                <p>Indoor and outdoor sports facilities.</p>
+            </div>
+
+            <div class="facility">
+                <h3>🏠 Hostel</h3>
+                <p>Comfortable accommodation for students.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h3>College Information</h3>
+
+                <p>📍 College Road, Kurnool, Andhra Pradesh</p>
+                <p>📞 +91 98765 43210</p>
+                <p>✉️ info@abccollege.edu</p>
+                <p>🕒 Monday - Friday: 9:00 AM - 5:00 PM</p>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+
+                <form onsubmit="submitForm(event)">
+                    <input type="text" id="name" placeholder="Your Name" required>
+
+                    <input type="email" id="email" placeholder="Your Email" required>
+
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ABC College of Engineering. All Rights Reserved.</p>
+        <p>Designed using HTML, CSS and JavaScript</p>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            alert("Thank you, " + name + "! Your message has been submitted.");
+
+            document.querySelector("form").reset();
+        }
+    </script>
+
+</body>
+</html>
+
+OUTPUT:
+┌──────────────────────────────────────────────────────────────┐
+│ ABC College     Home  About  Courses  Facilities  Contact   │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│                 Welcome to ABC College                       │
+│                  Learn Today, Lead Tomorrow                   │
+│                                                              │
+│                    [ Explore Courses ]                        │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│                     About Our College                         │
+│                                                              │
+│   ABC College of Engineering is committed to providing       │
+│   quality education and developing students...               │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│                       Our Courses                             │
+│                                                              │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐         │
+│  │ Computer     │ │ Information  │ │ Electronics  │         │
+│  │ Science      │ │ Technology   │ │ Engineering  │         │
+│  └──────────────┘ └──────────────┘ └──────────────┘         │
+│                                                              │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐         │
+│  │ Mechanical   │ │ Civil        │ │ Business     │         │
+│  │ Engineering  │ │ Engineering  │ │ Administration│         │
+│  └──────────────┘ └──────────────┘ └──────────────┘         │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│                     Our Facilities                           │
+│                                                              │
+│   📚 Library   💻 Computer Lab   🏀 Sports   🏠 Hostel       │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│                       Contact Us                             │
+│                                                              │
+│  College Information          Send a Message                 │
+│  📍 College Road              [ Your Name ]                  │
+│  📞 +91 98765 43210           [ Your Email ]                 │
+│  ✉️ info@abccollege.edu       [ Your Message ]              │
+│                               [ Submit ]                     │
+├──────────────────────────────────────────────────────────────┤
+│       © 2026 ABC College of Engineering.                    │
+└──────────────────────────────────────────────────────────────┘
